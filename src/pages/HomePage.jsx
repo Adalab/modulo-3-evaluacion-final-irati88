@@ -1,20 +1,20 @@
 import { useState, useEffect } from "react";
+import ls from "../services/localStorage";
 import getCharacters from "../services/api";
 
 const HomePage = () => {
-  const [character, setCharacter] = useState([]);
+  const [characters, setCharacters] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [house, setHouse] = useState("");
 
   useEffect(() => {
     getCharacters().then((data) => {
-        console.log(data);
-        setCharacter (data);
-      });
+      setCharacters(data);
+    });
   }, []);
 
   const handleChangeCharacter = (ev) => {
-    setCharacter(ev.target.value);
+    setCharacters(ev.target.value);
     console.log(ev.target.value);
   };
 
@@ -28,11 +28,11 @@ const HomePage = () => {
       <h1>Harry Potter</h1>
 
       <form>
-        <label htmlFor="character">Busca por personaje </label>
+        <label htmlFor="characters">Busca por personaje </label>
         <input
-          name="character"
-          id="character"
-          value={searchValue}
+          name="characters"
+          id="characters"
+          value={characters}
           onChange={handleChangeCharacter}
         />
         <label htmlFor="house"> Selecciona la casa</label>
@@ -42,13 +42,27 @@ const HomePage = () => {
           value={house}
           onChange={handleChangeHouse}
         >
+          <option value="">Todas las casas</option>
           <option value="">Gryffindor</option>
+          <option value="">Ravenclaw</option>
+          <option value="">Slytherin</option>
         </select>
-        <ul>
-            <li key={character.id}>
 
-            </li>
+        return (
+        <ul>
+          {characters.map((character) => {
+
+            return (
+              <li key={character.id}>
+                <img src={character.picture || "https://placehold.co/250x250/transparent/F00"} alt="No picture" />
+                <p>{character.name}</p>
+                <p>{character.species}</p>
+              </li>
+            )
+          })}
+
         </ul>
+
       </form>
     </>
   );
