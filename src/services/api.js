@@ -5,7 +5,6 @@ const getCharacters = () => {
         .then((data) => {
             const memberData = data.map((member) => {
                 return {
-                    id: member.id,
                     picture: member.image,
                     name: member.name,
                     species: member.species,
