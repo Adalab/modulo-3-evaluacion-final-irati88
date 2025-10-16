@@ -2,77 +2,68 @@ import { useState, useEffect } from "react";
 // import ls from "../services/localStorage";
 import getCharacters from "../services/api";
 import Filters from "../components/Filters";
-
+import CharacterList from "../components/CharacterList";
 
 const HomePage = () => {
   const [characters, setCharacters] = useState([]);
-  const [searchValue, setSearchValue] = useState("");
-  const [house, setHouse] = useState("");
+  const [house, setHouse] = useState("Gryffindor");
+  const [nameFilter, setNameFilter] = useState("");
 
   const houseOptions = ["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"];
 
   useEffect(() => {
-    getCharacters().then((data) => {
-      setCharacters(data);
-    });
+    getCharacters()
+      .then((data) => {
+        setCharacters(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, []);
 
-  const updateCharacter = (ev) => {
-    setSearchValue(ev.target.value);
+  const updateCharacter = (value) => {
+    setNameFilter(value);
   };
 
-  const updateHouse = (ev) => {
-    setHouse(ev.target.value);
+  const updateHouse = (value) => {
+    setHouse(value);
   };
 
   const filteredCharacters = characters.filter((character) => {
-    const matchesName = character.name.toLowerCase().includes(searchValue.toLowerCase());
+    const matchesName = character.name
+      .toLowerCase()
+      .includes(nameFilter.toLowerCase());
     const matchesHouse = house === "" || character.house === house;
     return matchesName && matchesHouse;
-  })
-
+  });
 
   return (
     <>
       <h1>Harry Potter</h1>
 
-      {/* Inputs de búsqueda */}
-      <form>
-        {/* <label htmlFor="characters">Busca por personaje </label>
-        <FilterByName
-          searchValue={searchValue}
-          handleChangeCharacter={handleChangeCharacter}
-        />
+      <Filters
+        characters={characters}
+        houseOptions={houseOptions}
+        house={house}
+        updateCharacter={updateCharacter}
+        updateHouse={updateHouse}
+        nameFilter={nameFilter}
+      />
 
-        <label htmlFor="house"> Selecciona la casa
-          <FilterByHouse
-            house={house}
-            handleChangeHouse={handleChangeHouse}
-          >
-            <option value="">Todas las casas</option>
-            {houseOptions.map((house) => {
-              return (
-                <option key={house} value={house}>{house}</option>
-              )
-            })}
-
-          </select>
-        </label> */}
-      </form>
-
-      <ul>
-        {filteredCharacters.map((character, index) => {
-
-          return (
-            <li key={character.index}>
-              <img src={character.picture || "https://placehold.co/250x250/transparent/F00"} alt="No picture" />
-              <p>{character.name}</p>
-              <p>{character.species}</p>
-            </li>
-          )
-        })}
-
-      </ul>
+      {filteredCharacters.length === 0 ? (
+        <div>
+          <img
+            src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExbWRnbnBvN3ZoNzRhMjJxcjQxNndqZ3Y0ZGdzb29ienRjbjN0enFqcCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/12AM4jjIyDJqCs/giphy.gif"
+            alt="Dobby"
+          />
+          <p>
+            Dobby does not know of a character with that name, sir. Dobby is
+            very sorry.
+          </p>
+        </div>
+      ) : (
+        <CharacterList characters={filteredCharacters} />
+      )}
     </>
   );
 };

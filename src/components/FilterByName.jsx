@@ -1,27 +1,28 @@
+import "react";
 import PropTypes from "prop-types";
 
-const FilterByName = ({searchValue, updateCharacter}) => {
-    const handleChangeCharacter = (ev) => {
-        updateCharacter(ev.target.value);
-    };
+const FilterByName = ({ nameFilter, updateCharacter }) => {
+  const handleChangeCharacter = (ev) => {
+    updateCharacter(ev.target.value);
+  };
 
-    return (
-        <form onSubmit={(ev) => ev.preventDefault()}>
-            <label htmlFor="characters">Find your favourite character </label>
-            <input
-                name="characters"
-                id="characters"
-                value={searchValue}
-                placeholder="P.e. Harry Potter"
-                onChange={handleChangeCharacter}
-            />
-        </form>
-    )
-}
+  return (
+    <form onSubmit={(ev) => ev.preventDefault()}>
+      <label htmlFor="characters">Find your favourite character </label>
+      <input
+        name="characters"
+        id="characters"
+        value={nameFilter}
+        placeholder="P.e. Harry Potter"
+        onChange={handleChangeCharacter}
+      />
+    </form>
+  );
+};
 
 export default FilterByName;
 
 FilterByName.propTypes = {
-searchValue: PropTypes.string.isRequired,
-updateCharacter: PropTypes.func.isRequired,
-}
+  nameFilter: PropTypes.string.isRequired,
+  updateCharacter: PropTypes.func.isRequired,
+};

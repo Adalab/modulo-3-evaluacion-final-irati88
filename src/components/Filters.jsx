@@ -1,24 +1,32 @@
+import "react";
 import PropTypes from "prop-types";
 import FilterByName from "./FilterByName";
 import FilterByHouse from "./FilterByHouse";
+import "../styles/app.css";
 
-const Filters = ({ searchValue, houseOptions, updateCharacter, updateHouse }) => {
-    return (
-        <>
-            <FilterByName searchValue={searchValue}
-                updateCharacter={updateCharacter} />
-            <FilterByHouse houseOptions={houseOptions}
-                updateHouse={updateHouse} />
-        </>
-    )
-}
+const Filters = ({ houseOptions, house, nameFilter, updateCharacter, updateHouse,}) => {
+  return (
+    <section>
+      <FilterByName 
+      nameFilter={nameFilter} 
+      updateCharacter={updateCharacter} 
+      />
+
+      <FilterByHouse
+        house={house}
+        houseOptions={houseOptions}
+        updateHouse={updateHouse}
+      />
+    </section>
+  );
+};
 
 export default Filters;
 
 Filters.propTypes = {
-    searchValue: PropTypes.string.isRequired,
-    updateCharacter: PropTypes.func.isRequired,
-    houseOptions: PropTypes.string.isRequired,
-    updateHouse: PropTypes.func.isRequired,
-
-}
+  house: PropTypes.string.isRequired,
+  houseOptions: PropTypes.array.isRequired,
+  updateCharacter: PropTypes.func.isRequired,
+  updateHouse: PropTypes.func.isRequired,
+  nameFilter: PropTypes.string.isRequired,
+};
