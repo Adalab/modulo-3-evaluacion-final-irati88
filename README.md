@@ -1,16 +1,65 @@
-# React + Vite
+Harry Potter Character Finder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto es parte de la evaluación final del Módulo 3 del bootcamp de programación web de Adalab. Se trata de una aplicación web desarrollada en React que permite visualizar un listado de personajes de Harry Potter, filtrarlos por nombre, casa y otros criterios, y ver información detallada de cada uno.
 
-Currently, two official plugins are available:
+El objetivo es construir una SPA (Single Page Application) con React que consuma una API pública para mostrar un listado de personajes de la saga de Harry Potter, con funcionalidades como:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+-> Filtrado por nombre y casa
+-> Detalles del personaje
+-> Navegación entre páginas con React Router
+-> Mejora visual con diseño responsive
 
-## React Compiler
+// ** Tecnologías utilizadas ** //
 
-The React Compiler is not enabled on this template. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+-> React
+-> React Router DOM
+-> HTML / CSS
+-> JavaScript
+-> Fetch API
+-> Git & GitHub
+-> GitHub Pages para el deploy
 
-## Expanding the ESLint configuration
+// ** Funcionalidades implementadas ** //
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+-- Listado de personajes -- 
+
+-> Consumo de la API: hp-api.onrender.com
+-> Visualización de cada personaje con su imagen, nombre y especie.
+-> Imagen de relleno para personajes sin imagen.
+
+-- Filtrado de personajes --
+
+-> Por nombre (input controlado, case-insensitive).
+-> Por casa (select dinámico).
+
+-- Componentes --
+
+-> CharacterFilter (input + select)
+-> CharacterList (listado de tarjetas)
+-> CharacterCard (tarjeta individual)
+-> CharacterDetail (pantalla de detalle)
+
+-- Detalle del personaje --
+
+-> Lista individual usando React Router.
+-> Información mostrada:
+
+     - Imagen
+     - Nombre completo
+     - Casa
+     - Estado (vivo o muerto)
+     - Género
+     - Especie
+
+ // ** Buenas prácticas aplicadas ** //
+
+-> Uso de PropTypes para validación de props.
+-> Uso de useState y useEffect para manejo de estado y efectos.
+-> Limpieza de errores en consola.
+-> Código modular y reutilizable.
+-> Uso de destructuring y valores por defecto.
+
+© Irati Aguado 2025
+
+-> Nombres de variables, funciones y archivos en inglés.
+
