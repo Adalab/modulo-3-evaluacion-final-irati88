@@ -1,14 +1,7 @@
 import PropTypes from "prop-types";
 
 const CharacterCard = ({ character }) => {
-  const {
-    picture,
-    name,
-    species,
-    gender,
-    alive,
-  } = character;
-
+  const { picture, name, species, gender, alive } = character;
   const placeholder = "https://placehold.co/200x250?text=No+Image";
 
   return (
@@ -16,14 +9,14 @@ const CharacterCard = ({ character }) => {
       <img
         className="character-card__image"
         src={picture || placeholder}
-        alt={`Foto de ${name}`}
+        alt={name ? `Picture of ${name}` : "Picture of the character"}
       />
       <div className="character-card__info">
         <h3 className="character-card__name">{name}</h3>
         <p className="character-card__species">Species: {species}</p>
         <p className="character-card__gender">Gender: {gender}</p>
         <p className={`character-card__status ${alive ? "alive" : "dead"}`}>
-          {alive ? "🟢 Alive" : "⚰️ Dead"}
+          {alive ? "💚 Alive" : "☠ Dead"}
         </p>
       </div>
     </article>

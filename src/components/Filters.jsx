@@ -1,12 +1,10 @@
-import "react";
 import PropTypes from "prop-types";
 import FilterByName from "./FilterByName";
 import FilterByHouse from "./FilterByHouse";
-import "../styles/app.css";
 
 const Filters = ({ houseOptions, house, nameFilter, updateCharacter, updateHouse,}) => {
   return (
-    <section>
+    <section className="filters">
       <FilterByName 
       nameFilter={nameFilter} 
       updateCharacter={updateCharacter} 

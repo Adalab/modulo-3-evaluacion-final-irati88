@@ -1,27 +1,29 @@
-import "react";
 import PropTypes from "prop-types";
 
 const CharacterDetail = ({ character }) => {
+
   return (
-    <>
-      <img
+    <section className="character-detail">
+      <img className="character-detail__image"
         src={
-          character.picture || "https://placehold.co/250x250/transparent/F00"
+          character.picture || "https://placehold.co/200x250?text=No+Image"
         }
-        alt="No picture"
+        alt={character.name}
       />
+      <div className="character-detail__info">
       <p>{character.name}</p>
       <p>{character.species}</p>
-    </>
+      </div>
+    </section>
   );
 };
-
-export default CharacterDetail;
 
 CharacterDetail.propTypes = {
   character: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    picture: PropTypes.string.isRequired,
-    species: PropTypes.string.isRequired,
+    picture: PropTypes.string,
+    species: PropTypes.string,
   }).isRequired,
 };
+
+export default CharacterDetail;

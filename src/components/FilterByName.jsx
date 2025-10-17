@@ -1,4 +1,3 @@
-import "react";
 import PropTypes from "prop-types";
 
 const FilterByName = ({ nameFilter, updateCharacter }) => {
@@ -7,22 +6,22 @@ const FilterByName = ({ nameFilter, updateCharacter }) => {
   };
 
   return (
-    <form onSubmit={(ev) => ev.preventDefault()}>
+     <div className="filter filter-name">
       <label htmlFor="characters">Find your favourite character </label>
       <input
         name="characters"
         id="characters"
         value={nameFilter}
-        placeholder="P.e. Harry Potter"
+        placeholder="Voldemort, Dumbledore ..."
         onChange={handleChangeCharacter}
       />
-    </form>
+    </div>
   );
 };
-
-export default FilterByName;
 
 FilterByName.propTypes = {
   nameFilter: PropTypes.string.isRequired,
   updateCharacter: PropTypes.func.isRequired,
 };
+
+export default FilterByName;

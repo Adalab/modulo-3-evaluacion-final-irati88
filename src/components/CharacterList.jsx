@@ -1,20 +1,39 @@
-import "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import CharacterCard from "./CharacterCard";
-import {Link} from "react-router-dom";
 
-const CharacterList = ({ characters }) => {
+const CharacterList = ({ characters, nameFilter, house }) => {
+  const filtered = characters.filter((character) => {
+    const matchesName = character.name
+      .toLowerCase()
+      .includes(nameFilter.toLowerCase());
+    const matchesHouse = house === "" || character.house === house;
+    return matchesName && matchesHouse;
+  });
 
- if (characters.length === 0) {
-    return <p>Dobby does not know of a character with that name, sir. Dobby is very sorry.</p>;
+  if (filtered.length === 0) {
+    return (
+      <div className="empty-message">
+        <img
+          src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExbWRnbnBvN3ZoNzRhMjJxcjQxNndqZ3Y0ZGdzb29ienRjbjN0enFqcCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/12AM4jjIyDJqCs/giphy.gif"
+          alt="Dobby"
+        />
+        <p>
+          Dobby does not know of a character with that name, sir. Dobby is very
+          sorry.
+        </p>
+      </div>
+    );
   }
 
   return (
     <section className="character-list">
       <ul className="character-list__grid">
-        {characters.map((character, index) => (
-          <li key={index} className="character-list__item">
-            <CharacterCard character={character} />
+        {filtered.map((character) => (
+          <li key={character.id} className="character-list__item">
+            <Link to={`/user/${character.id}`}>
+              <CharacterCard character={character} />
+            </Link>
           </li>
         ))}
       </ul>
@@ -24,6 +43,8 @@ const CharacterList = ({ characters }) => {
 
 CharacterList.propTypes = {
   characters: PropTypes.array.isRequired,
+  nameFilter: PropTypes.string.isRequired,
+  house: PropTypes.string.isRequired,
 };
 
 export default CharacterList;

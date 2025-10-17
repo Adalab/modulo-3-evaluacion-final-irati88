@@ -1,42 +1,109 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
+body {
+  margin: 0;
+  font-family: "Cinzel", serif;
+  background-color: #1b1b1b;
+  color: #f4f0d9;
+  min-height: 100vh;
+}
+
+.page {
+  text-align: center;
   padding: 2rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  color: #d6b85a;
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 5px #000;
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.filter label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.filter input,
+.filter select {
+  padding: 0.5rem;
+  border: 1px solid #d6b85a;
+  border-radius: 5px;
+  background: #2a2a2a;
+  color: #f4f0d9;
+}
+
+.character-list__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+}
+
+.character-card {
+  background: #2a2a2a;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+
+.character-card:hover {
+  transform: scale(1.05);
+}
+
+.character-card__image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.character-card__info {
+  padding: 1rem;
+}
+
+.character-card__name {
+  color: #d6b85a;
+  font-size: 1.3rem;
+}
+
+.character-card__status.alive {
+  color: #79ff79;
+}
+
+.character-card__status.dead {
+  color: #ff5555;
+}
+
+.character-detail {
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.character-detail__image {
+  border-radius: 10px;
+  width: 200px;
+  height: 250px;
+  object-fit: cover;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.back-link {
+  display: inline-block;
+  margin-top: 1.5rem;
+  color: #d6b85a;
+  text-decoration: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.back-link:hover {
+  text-decoration: underline;
 }
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+.empty-message, .notfound-page {
+  text-align: center;
+  padding: 3rem;
 }

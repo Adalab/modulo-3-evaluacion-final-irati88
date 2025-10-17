@@ -1,4 +1,3 @@
-import "react";
 import PropTypes from "prop-types";
 
 const FilterByHouse = ({ house, updateHouse, houseOptions }) => {
@@ -7,9 +6,8 @@ const FilterByHouse = ({ house, updateHouse, houseOptions }) => {
   };
 
   return (
-    <form onSubmit={(ev) => ev.preventDefault()}>
-      <label htmlFor="house">
-        Choose your house
+    <div className="filter filter-house">
+      <label htmlFor="house">Choose your house:</label>
         <select
           name="house"
           id="house"
@@ -23,15 +21,14 @@ const FilterByHouse = ({ house, updateHouse, houseOptions }) => {
             </option>
           ))}
         </select>
-      </label>
-    </form>
+    </div>
   );
 };
-
-export default FilterByHouse;
 
 FilterByHouse.propTypes = {
   house: PropTypes.string.isRequired,
   updateHouse: PropTypes.func.isRequired,
   houseOptions: PropTypes.array.isRequired,
 };
+
+export default FilterByHouse;
