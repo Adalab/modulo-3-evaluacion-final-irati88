@@ -58,9 +58,10 @@ El objetivo es construir una SPA (Single Page Application) con React que consuma
 - Limpieza de errores en consola.
 - Código modular y reutilizable.
 - Uso de destructuring y valores por defecto.
-
+- Nombres de variables, funciones y archivos en inglés.
 © Irati Aguado 2025
 
--> Nombres de variables, funciones y archivos en inglés.
+
+
 
 
