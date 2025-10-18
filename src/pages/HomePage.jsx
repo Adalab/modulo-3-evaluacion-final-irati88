@@ -4,10 +4,11 @@ import getCharacters from "../services/api";
 import Filters from "../components/Filters";
 import CharacterList from "../components/CharacterList";
 
+
 const HomePage = () => {
   const [characters, setCharacters] = useState([]);
   const [house, setHouse] = useState("");
-  const [nameFilter, setNameFilter] = useState("");
+  const [nameFilter, setNameFilter] = useState(ls.get("nameFilter"));
 
   const houseOptions = ["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"];
 
@@ -24,6 +25,7 @@ const HomePage = () => {
 
   const updateCharacter = (value) => {
     setNameFilter(value);
+    ls.set("nameFilter", value);
   };
 
   const updateHouse = (value) => {

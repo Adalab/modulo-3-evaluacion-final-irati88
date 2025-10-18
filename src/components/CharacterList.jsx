@@ -30,8 +30,9 @@ const CharacterList = ({ characters, nameFilter, house }) => {
     <section className="character-list">
       <ul className="character-list__grid">
         {filtered.map((character) => (
+          
           <li key={character.id} className="character-list__item">
-            <Link to={`/user/${character.id}`}>
+            <Link to={`/character/${character.id}`}>
               <CharacterCard character={character} />
             </Link>
           </li>

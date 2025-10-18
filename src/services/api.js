@@ -5,8 +5,10 @@ const getCharacters = () => {
         .then((data) => {
             const memberData = data.map((member) => {
                 return {
+                    id: member.id,
                     picture: member.image,
                     name: member.name,
+                    house: member.house,
                     species: member.species,
                     gender: member.gender,
                     alive: member.alive,
@@ -17,3 +19,4 @@ const getCharacters = () => {
 };
 
 export default getCharacters;
+

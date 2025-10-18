@@ -7,10 +7,10 @@ const FilterByName = ({ nameFilter, updateCharacter }) => {
 
   return (
      <div className="filter filter-name">
-      <label htmlFor="characters">Find your favourite character </label>
+      <label htmlFor="characters">Find your favourite character: </label>
       <input
-        name="characters"
-        id="characters"
+        name="nameFilter"
+        id="nameFilter"
         value={nameFilter}
         placeholder="Voldemort, Dumbledore ..."
         onChange={handleChangeCharacter}

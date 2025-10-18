@@ -5,4 +5,10 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   base: "/modulo-3-evaluacion-final-irati88/",
+  server: {
+    open: "/",
+    watch: {
+      usePolling: true
+    }
+  }
 })
