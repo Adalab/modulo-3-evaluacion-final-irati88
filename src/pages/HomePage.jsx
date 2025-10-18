@@ -8,7 +8,7 @@ import CharacterList from "../components/CharacterList";
 const HomePage = () => {
   const [characters, setCharacters] = useState([]);
   const [house, setHouse] = useState("");
-  const [nameFilter, setNameFilter] = useState(ls.get("nameFilter"));
+  const [nameFilter, setNameFilter] = useState(ls.get("nameFilter", ""));
 
   const houseOptions = ["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"];
 
